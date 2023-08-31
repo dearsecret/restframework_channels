@@ -46,13 +46,15 @@ SYSTEM_APP = [
 PROJECT_APP = [
     "users.apps.UsersConfig",
     "common.apps.CommonConfig",
+    "chats.apps.ChatsConfig",
 ]
 
 THIRD_PARTY = [
+    "daphne",
     "rest_framework",
 ]
 
-INSTALLED_APPS = SYSTEM_APP + PROJECT_APP + THIRD_PARTY
+INSTALLED_APPS = THIRD_PARTY + SYSTEM_APP + PROJECT_APP
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -84,6 +86,7 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = "config.wsgi.application"
+ASGI_APPLICATION = "config.asgi.application"
 
 
 # Database
@@ -94,6 +97,15 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
+}
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
 }
 
 REST_FRAMEWORK = {

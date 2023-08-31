@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "20230830"
+name = "20230831"
 version = "0.1.0"
 description = ""
 authors = ["dearsecret <dearsecret1217@gmail.com>"]
@@ -7,12 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-django = "^4.2.4"
-django-environ = "^0.10.0"
-markdown = "^3.4.4"
-django-filter = "^23.2"
-pyjwt = "^2.8.0"
 djangorestframework = "^3.14.0"
+pyjwt = "^2.8.0"
+markdown = "^3.4.4"
+django = "^4.2.4"
+django-filter = "^23.2"
+django-environ = "^0.11.1"
+daphne = "^4.0.0"
+channels = "^4.0.0"
 
 
 [build-system]
