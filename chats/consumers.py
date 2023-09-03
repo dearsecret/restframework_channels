@@ -21,7 +21,7 @@ class ChatConusmer(WebsocketConsumer):
         )
         self.accept()
 
-        chat_list = Chat.objects.all().order_by("-created_at")[0:10]
+        chat_list = Chat.objects.order_by("-created_at").all()[0:10]
         serializer = ChatDetailSerializer(chat_list, many=True)
         self.send(serializer.data)
 
@@ -46,6 +46,7 @@ class ChatConusmer(WebsocketConsumer):
     #     self.send(text_data=json.dumps(message))
 
     # anonymous chat implements
+
     @staticmethod
     @receiver(post_save, sender=Chat)
     def receive_instance(sender, instance, created, **kwargs):
